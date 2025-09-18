@@ -97,7 +97,7 @@ body{
 /* tabs */
 .center_view .el-tabs__header{
     width: 100%;
-    margin: 20px 0px;
+    margin: -20px 0px;
     padding: 0px !important;
     height: auto;
     box-shadow: none !important;
@@ -616,8 +616,9 @@ body{
 /* form盒子 */
 .edit_form {
     margin: 20px auto;
-    padding: 0px;
+    padding: 10px;
     border-radius: 4px;
+    font-weight: bold;
     border: 0px solid rgb(221, 221, 221);
 }
 .edit_form .el-dialog__body{
@@ -635,7 +636,7 @@ body{
     text-align: right;
     display: block;
     font-size:16px;
-    font-weight: 500;
+    font-weight: bold;
     background: rgba(255, 255, 255,1);
 }
 .edit_form .el-form-item .el-form-item__content{

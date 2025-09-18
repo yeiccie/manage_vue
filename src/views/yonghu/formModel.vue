@@ -4,19 +4,19 @@
 			<el-form class="formModel_form" ref="formRef" :model="form" :rules="rules">
 				<el-row >
 					<el-col :span="24">
-						<el-form-item label="用户账号" prop="yonghuzhanghao">
+						<el-form-item label="Account Name" prop="yonghuzhanghao">
 							<el-input class="list_inp" v-model="form.yonghuzhanghao" placeholder="用户账号"
 								type="text" :readonly="!isAdd||disabledForm.yonghuzhanghao?true:false" />
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="用户密码" prop="yonghumima">
+						<el-form-item label="Password" prop="yonghumima">
 							<el-input class="list_inp" v-model="form.yonghumima" placeholder="用户密码"
 								type="password" :readonly="!isAdd||disabledForm.yonghumima?true:false" />
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="用户姓名" prop="yonghuxingming">
+						<el-form-item label="Name" prop="yonghuxingming">
 							<el-input class="list_inp" v-model="form.yonghuxingming" placeholder="用户姓名"
                                 type="text"
 								:readonly="!isAdd||disabledForm.yonghuxingming?true:false" />
@@ -25,12 +25,12 @@
 
 					<el-col :span="24">
 						<el-form-item prop="touxiang"
-									  label="头像"
+									  label="Avatar"
 						>
 							<uploads
 								:disabled="!isAdd||disabledForm.touxiang?true:false"
 								action="file/upload"
-								tip="请上传头像"
+								tip="Upload an avatar"
 								style="width: 100%;text-align: left;"
 								:fileUrls="form.touxiang?form.touxiang:''" 
 								@change="touxiangUploadSuccess">
@@ -38,7 +38,7 @@
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="性别" prop="xingbie">
+						<el-form-item label="Gender" prop="xingbie">
 							<el-select
 								class="list_sel"
 								:disabled="!isAdd||disabledForm.xingbie?true:false"
@@ -53,7 +53,7 @@
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="手机号码" prop="shoujihaoma">
+						<el-form-item label="Phone Number" prop="shoujihaoma">
 							<el-input class="list_inp" v-model="form.shoujihaoma" placeholder="手机号码"
                                 type="text"
 								:readonly="!isAdd||disabledForm.shoujihaoma?true:false" />
@@ -92,7 +92,7 @@
 	const emit = defineEmits(['formModelChange'])
 	//基础信息
 	const tableName = 'yonghu'
-	const formName = '用户'
+	const formName = 'User'
 	//基础信息
 	//form表单
 	const form = ref({})
@@ -153,7 +153,7 @@
 			yonghumima: '',
 			yonghuxingming: '',
 			touxiang: '',
-			xingbie: '男',
+			xingbie: 'Male',
 			shoujihaoma: '',
 		}
 	}
@@ -182,15 +182,15 @@
 		}
 		if(formType == 'add'){
 			isAdd.value = true
-			formTitle.value = '新增' + formName
+			formTitle.value = 'add' + formName
 			formVisible.value = true
 		}else if(formType == 'info'){
 			isAdd.value = false
-			formTitle.value = '查看' + formName
+			formTitle.value = 'view' + formName
 			getInfo()
 		}else if(formType == 'edit'){
 			isAdd.value = true
-			formTitle.value = '修改' + formName
+			formTitle.value = 'edit' + formName
 			getInfo()
 		}
 		else if(formType == 'cross'){
@@ -249,7 +249,7 @@
 			if(statusColumnValue){
 				crossColumnValue.value = statusColumnValue
 			}
-			form.value.xingbie='男'
+			form.value.xingbie='Male'
 			formVisible.value = true
 		}
 
@@ -259,7 +259,7 @@
 		}).then(res => {
 			var json = res.data.data
 		})
-		xingbieLists.value = "男,女".split(',')
+		xingbieLists.value = "Male,Female".split(',')
 	}
 	//初始化
 	//声明父级调用
@@ -374,6 +374,7 @@
 				}
 				// 下拉框
 				.list_sel {
+          width: 130px;
 					//去掉默认样式
 					.select-trigger{
 						height: 100%;

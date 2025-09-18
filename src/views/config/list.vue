@@ -15,7 +15,7 @@
 				:data="list"
 				@row-click="listChange">
 				<el-table-column :resizable='true' align="left" header-align="left" type="selection" width="55" />
-				<el-table-column label="序号" width="70" :resizable='true' align="left" header-align="left">
+				<el-table-column label="Seq" width="70" :resizable='true' align="left" header-align="left">
 					<template #default="scope">{{ (listQuery.page-1)*listQuery.limit+scope.$index + 1}}</template>
 				</el-table-column>
 				<el-table-column min-width="140"
@@ -24,12 +24,12 @@
 					align="left"
 					header-align="left"
 					prop="name"
-					label="名称">
+					label="name">
 					<template #default="scope">
 						{{scope.row.name}}
 					</template>
 				</el-table-column>
-				<el-table-column label="值" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="image" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<div v-if="scope.row.value">
 							<el-image v-if="scope.row.value.substring(0,4)=='http'" preview-teleported
@@ -43,11 +43,11 @@
 						<div v-else>无图片</div>
 					</template>
 				</el-table-column>
-				<el-table-column label="操作" width="300" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="options" width="300" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<el-button class="edit_btn" type="primary" @click="editClick(scope.row.id)" v-if=" btnAuth('config','修改')">
 							<i class="iconfont icon-xiugai5"></i>
-							修改						</el-button>
+							modify						</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -57,9 +57,9 @@
 				:total="total"
 				:page-size="listQuery.limit"
                 v-model:current-page="listQuery.page"
-				prev-text="上一页"
-				next-text="下一页"
-				:hide-on-single-page="false"
+				prev-text="Pre"
+				next-text="Next"
+				:hide-on-single-page="true"
 				:style='{}'
 				:page-sizes="[10, 20, 30, 40, 50, 100]"
 				@size-change="sizeChange"

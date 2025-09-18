@@ -4,20 +4,20 @@
 			<el-form class="userinfo_form" ref="userinfoFormRef" :model="form">
 				<el-row>
 					<el-col :span="24">
-						<el-form-item label="用户账号" prop="yonghuzhanghao">
+						<el-form-item label="User Account" prop="yonghuzhanghao">
 							<el-input class="list_inp" v-model="user.yonghuzhanghao" readonly placeholder="用户账号" clearable />
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="用户姓名" prop="yonghuxingming">
+						<el-form-item label="User Name" prop="yonghuxingming">
 							<el-input class="list_inp" v-model="user.yonghuxingming"  placeholder="用户姓名" clearable />
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="头像" prop="touxiang">
+						<el-form-item label="Avatar" prop="touxiang">
 							<uploads
 								action="file/upload" 
-								tip="请上传头像"
+								tip="Upload an avatar"
 								style="width: 100%;text-align: left;"
 								:fileUrls="user.touxiang?user.touxiang:''" 
 								@change="yonghutouxiangUploadSuccess">
@@ -25,10 +25,11 @@
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="性别" prop="xingbie">
-							<el-select 
-								class="list_sel" 
-								v-model="user.xingbie" 
+						<el-form-item label="Gender" prop="xingbie">
+							<el-select
+								class="list_sel"
+                style="width: 130px"
+								v-model="user.xingbie"
 								placeholder="请选择性别"
 								>
 								<el-option v-for="item in yonghuxingbieLists" :label="item" :value="item"></el-option>
@@ -36,7 +37,7 @@
 						</el-form-item>
 					</el-col>
 					<el-col :span="24">
-						<el-form-item label="手机号码" prop="shoujihaoma">
+						<el-form-item label="Phone Number" prop="shoujihaoma">
 							<el-input class="list_inp" v-model="user.shoujihaoma"  placeholder="手机号码" clearable />
 						</el-form-item>
 					</el-col>
@@ -63,7 +64,7 @@
 	const user = ref({})
 	const yonghuxingbieLists = ref([])
 	const init = () => {
-		yonghuxingbieLists.value = "男,女".split(',')
+		yonghuxingbieLists.value = "Male,Female".split(',')
 	}
 	const yonghutouxiangUploadSuccess=(fileUrls)=> {
 	    user.value.touxiang = fileUrls;

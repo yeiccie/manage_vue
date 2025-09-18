@@ -4,7 +4,7 @@
 			<el-form class="formModel_form" ref="formRef" :model="form" :rules="rules">
 				<el-row >
 					<el-col :span="24">
-						<el-form-item label="地址" prop="address">
+						<el-form-item label="Address" prop="address">
 							<el-input class="list_inp" v-model="form.address" placeholder="地址"
                                 type="text"
 								:readonly="!isAdd||disabledForm.address?true:false" />
@@ -12,7 +12,7 @@
 					</el-col>
 
 					<el-col :span="24">
-						<el-form-item label="收货人" prop="name">
+						<el-form-item label="Addressee" prop="name">
 							<el-input class="list_inp" v-model="form.name" placeholder="收货人"
                                 type="text"
 								:readonly="!isAdd||disabledForm.name?true:false" />
@@ -20,7 +20,7 @@
 					</el-col>
 
 					<el-col :span="24">
-						<el-form-item label="电话" prop="phone">
+						<el-form-item label="Phone Number" prop="phone">
 							<el-input class="list_inp" v-model="form.phone" placeholder="电话"
                                 type="text"
 								:readonly="!isAdd||disabledForm.phone?true:false" />
@@ -28,9 +28,9 @@
 					</el-col>
 
 					<el-col :span="24">
-						<el-form-item label="是否默认地址" prop="isdefault">
+						<el-form-item label="Is Default Address" prop="isdefault">
 							<el-select
-								class="list_sel"
+								class="list_sel" style="width: 120px;"
 								:disabled="!isAdd||disabledForm.isdefault?true:false"
 								v-model="form.isdefault" 
 								placeholder="请选择是否默认地址"
@@ -46,10 +46,10 @@
 			</el-form>
 			<template #footer v-if="isAdd||type=='logistics'||type=='reply'">
 				<span class="formModel_btn_box">
-					<el-button class="cancel_btn" @click="closeClick">取消</el-button>
+					<el-button class="cancel_btn" @click="closeClick">Cancel</el-button>
 					<el-button class="confirm_btn" type="primary" @click="save"
 						>
-						提交
+						Commit
 					</el-button>
 				</span>
 			</template>
@@ -121,7 +121,7 @@
 			address: '',
 			name: '',
 			phone: '',
-			isdefault: '否',
+			isdefault: 'No',
 			userid: '',
 		}
 	}
@@ -143,7 +143,8 @@
 	const crossColumnValue = ref('')
 	//初始化
 	const init=(formId=null,formType='add',formNames='',row=null,table=null,statusColumnName=null,tips=null,statusColumnValue=null)=>{
-		resetForm()
+    isdefaultLists.value = "Yes,No".split(',')
+    resetForm()
 		if(formId){
 			id.value = formId
 			type.value = formType

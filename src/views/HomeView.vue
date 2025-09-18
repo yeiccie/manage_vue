@@ -1,6 +1,6 @@
 <template>
 	<div class="home_view">
-		<div class="projectTitle">欢迎使用 {{projectName}}</div>
+		<div class="projectTitle">Welcome to {{projectName}}</div>
 		<div class="count_list">
 		</div>
 		<div class="card_list">

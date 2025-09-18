@@ -80,9 +80,9 @@
 				:total="total"
 				:page-size="listQuery.limit"
                 v-model:current-page="listQuery.page"
-				prev-text="上一页"
-				next-text="下一页"
-				:hide-on-single-page="false"
+				prev-text="Pre"
+				next-text="Next"
+				:hide-on-single-page="true"
 				:style='{}'
 				:page-sizes="[10, 20, 30, 40, 50, 100]"
 				@size-change="sizeChange"

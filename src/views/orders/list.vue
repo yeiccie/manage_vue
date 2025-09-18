@@ -7,29 +7,29 @@
 			    class="demo-tabs"
 				@tab-change="orderTabClick"
 				>
-				<el-tab-pane label="全部" :name="''"></el-tab-pane>
-				<el-tab-pane label="未支付" name="未支付" v-if="btnAuth(`orders/未支付`,'查看')"></el-tab-pane>
+				<el-tab-pane label="All" :name="''"></el-tab-pane>
+				<el-tab-pane label="Unpaid" name="Unpaid" v-if="btnAuth(`orders/Unpaid`,'查看')"></el-tab-pane>
 				<el-tab-pane label="拼团中" name="拼团中" v-if="btnAuth(`orders/拼团中`,'查看')"></el-tab-pane>
-				<el-tab-pane label="已支付" name="已支付" v-if="btnAuth(`orders/已支付`,'查看')"></el-tab-pane>
-				<el-tab-pane label="已发货" name="已发货" v-if="btnAuth(`orders/已发货`,'查看')"></el-tab-pane>
-				<el-tab-pane label="已完成" name="已完成" v-if="btnAuth(`orders/已完成`,'查看')"></el-tab-pane>
-				<el-tab-pane label="已退款" name="已退款" v-if="btnAuth(`orders/已退款`,'查看')"></el-tab-pane>
-				<el-tab-pane label="已取消" name="已取消" v-if="btnAuth(`orders/已取消`,'查看')"></el-tab-pane>
+				<el-tab-pane label="Paid" name="Paid" v-if="btnAuth(`orders/Paid`,'查看')"></el-tab-pane>
+				<el-tab-pane label="Shipped" name="Shipped" v-if="btnAuth(`orders/Shipped`,'查看')"></el-tab-pane>
+				<el-tab-pane label="Completed" name="Completed" v-if="btnAuth(`orders/Completed`,'查看')"></el-tab-pane>
+				<el-tab-pane label="Refunded" name="Refunded" v-if="btnAuth(`orders/Refunded`,'查看')"></el-tab-pane>
+				<el-tab-pane label="Cancelled" name="Cancelled" v-if="btnAuth(`orders/Cancelled`,'查看')"></el-tab-pane>
 			</el-tabs>
 			<div class="list_search_view">
-				<el-form :model="searchQuery" class="search_form" >
+				<el-form :model="searchQuery" class="search_form">
 					<div class="search_view">
 						<div class="search_label">
-							订单编号：
+              Order code：
 						</div>
 						<div class="search_box">
-							<el-input class="search_inp" v-model="searchQuery.orderid" placeholder="订单编号"
+							<el-input class="search_inp" v-model="searchQuery.orderid" placeholder="Order code"
 								clearable>
 							</el-input>
 						</div>
 					</div>
 					<div class="search_btn_view">
-						<el-button class="search_btn" type="primary" @click="searchClick()" size="small">搜索</el-button>
+						<el-button class="search_btn" type="primary" @click="searchClick()" size="small">Search</el-button>
 					</div>
 				</el-form>
 				<div class="btn_view">
@@ -57,7 +57,7 @@
 				:data="list"
 				@row-click="listChange">
 				<el-table-column :resizable='true' align="left" header-align="left" type="selection" width="55" />
-				<el-table-column label="序号" width="70" :resizable='true' align="left" header-align="left">
+				<el-table-column label="Seq" width="70" :resizable='true' align="left" header-align="left">
 					<template #default="scope">{{ (listQuery.page-1)*listQuery.limit+scope.$index + 1}}</template>
 				</el-table-column>
 				<el-table-column min-width="140"
@@ -66,7 +66,7 @@
 					align="left"
 					header-align="left"
 					prop="orderid"
-					label="订单编号">
+					label="Order code">
 					<template #default="scope">
 						{{scope.row.orderid}}
 					</template>
@@ -77,12 +77,12 @@
 					align="left"
 					header-align="left"
 					prop="goodname"
-					label="商品名称">
+					label="Item name">
 					<template #default="scope">
 						{{scope.row.goodname}}
 					</template>
 				</el-table-column>
-				<el-table-column label="图片" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="Pic" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<div v-if="scope.row.picture">
 							<el-image v-if="scope.row.picture.substring(0,4)=='http'" preview-teleported
@@ -93,7 +93,7 @@
 								:src="$config.url+scope.row.picture.split(',')[0]" style="width:100px;height:100px">
 							</el-image>
 						</div>
-						<div v-else>无图片</div>
+						<div v-else>no pic</div>
 					</template>
 				</el-table-column>
 				<el-table-column min-width="140"
@@ -102,7 +102,7 @@
 					align="left"
 					header-align="left"
 					prop="buynumber"
-					label="购买数量">
+					label="Quantity">
 					<template #default="scope">
 						{{scope.row.buynumber}}
 					</template>
@@ -113,7 +113,7 @@
 					align="left"
 					header-align="left"
 					prop="price"
-					label="单价">
+					label="price">
 					<template #default="scope">
 						{{scope.row.price}}
 					</template>
@@ -124,7 +124,7 @@
 					align="left"
 					header-align="left"
 					prop="discountprice"
-					label="折扣价">
+					label="Disc price">
 					<template #default="scope">
 						{{scope.row.discountprice}}
 					</template>
@@ -135,7 +135,7 @@
 					align="left"
 					header-align="left"
 					prop="total"
-					label="总价">
+					label="Totle">
 					<template #default="scope">
 						{{scope.row.total}}
 					</template>
@@ -146,7 +146,7 @@
 					align="left"
 					header-align="left"
 					prop="discounttotal"
-					label="折扣总价格">
+					label="Disc total">
 					<template #default="scope">
 						{{scope.row.discounttotal}}
 					</template>
@@ -275,9 +275,9 @@
 				:total="total"
 				:page-size="listQuery.limit"
                 v-model:current-page="listQuery.page"
-				prev-text="上一页"
-				next-text="下一页"
-				:hide-on-single-page="false"
+				prev-text="Pre"
+				next-text="Next"
+				:hide-on-single-page="true"
 				:style='{}'
 				:page-sizes="[10, 20, 30, 40, 50, 100]"
 				@size-change="sizeChange"
@@ -540,7 +540,7 @@
 		getList()
 	}
 	const orderStatus = ref('')
-    if(['未支付'  ,'已支付','已发货','已完成','已退款','已取消'].includes(route.query.menuJump)){
+    if(['Unpaid'  ,'Paid','Shipped','Completed','Refunded','Cancelled'].includes(route.query.menuJump)){
         orderStatus.value = route.query.menuJump
     }
 	const orderStatusFormatter =(row, column)=> {
@@ -602,7 +602,7 @@
 	}
 	//初始化
 	const init = () => {
-        if(['未支付'  ,'已支付','已发货','已完成','已退款','已取消'].includes(route.query.menuJump)){
+        if(['Unpaid'  ,'Paid','Shipped','Completed','Refunded','Cancelled'].includes(route.query.menuJump)){
             orderStatus.value = route.query.menuJump
         }
 		getList()
@@ -612,6 +612,7 @@
 <style lang="scss" scoped>
 	// 切换栏
 	.demo-tabs {
+    margin-top: 20px;
 		// 头部
 		:deep(.el-tabs__header) {
 			// 滑动区

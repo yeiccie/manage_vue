@@ -5,41 +5,41 @@
 				<el-form :model="searchQuery" class="search_form" >
 					<div class="search_view">
 						<div class="search_label">
-							商品名称：
+							Item Name：
 						</div>
 						<div class="search_box">
-							<el-input class="search_inp" v-model="searchQuery.shangpinmingcheng" placeholder="商品名称"
+							<el-input class="search_inp" v-model="searchQuery.shangpinmingcheng" placeholder="Item Name"
 								clearable>
 							</el-input>
 						</div>
 					</div>
 					<div class="search_view">
 						<div class="search_label">
-							审核状态：
+              Review Status：
 						</div>
 						<div class="search_box">
 							<el-select
 								class="search_sel"
 								clearable
 								v-model="searchQuery.sfsh"
-								placeholder="审核状态"
+								placeholder="Review Status"
 								>
 								<el-option v-for="item in approvalLists" :label="item" :value="item"></el-option>
 							</el-select>
 						</div>
 					</div>
 					<div class="search_btn_view">
-						<el-button class="search_btn" type="primary" @click="searchClick()" size="small">搜索</el-button>
+						<el-button class="search_btn" type="primary" @click="searchClick()" size="small">Search</el-button>
 					</div>
 				</el-form>
 				<div class="btn_view">
-					<el-button class="add_btn" type="success" @click="addClick" v-if="btnAuth('ershouwupin','新增')">
+					<el-button class="add_btn" type="success" @click="addClick" v-if="btnAuth('ershouwupin','add')">
 						<i class="iconfont icon-xinzeng1"></i>
-						新增
+						add
 					</el-button>
-					<el-button class="del_btn" type="danger" :disabled="selRows.length?false:true" @click="delClick(null)"  v-if="btnAuth('ershouwupin','删除')">
+					<el-button class="del_btn" type="danger" :disabled="selRows.length?false:true" @click="delClick(null)"  v-if="btnAuth('ershouwupin','delete')">
 						<i class="iconfont icon-shanchu4"></i>
-						删除
+						delete
 					</el-button>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 				:data="list"
 				@row-click="listChange">
 				<el-table-column :resizable='true' align="left" header-align="left" type="selection" width="55" />
-				<el-table-column label="序号" width="70" :resizable='true' align="left" header-align="left">
+				<el-table-column label="Seq" width="60" :resizable='true' align="left" header-align="left">
 					<template #default="scope">{{ (listQuery.page-1)*listQuery.limit+scope.$index + 1}}</template>
 				</el-table-column>
 				<el-table-column min-width="140"
@@ -62,12 +62,12 @@
 					align="left"
 					header-align="left"
 					prop="shangpinmingcheng"
-					label="商品名称">
+					label="Item name">
 					<template #default="scope">
 						{{scope.row.shangpinmingcheng}}
 					</template>
 				</el-table-column>
-				<el-table-column label="外观" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="Appearance" min-width="140" width="140" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<div v-if="scope.row.waiguan">
 							<el-image v-if="scope.row.waiguan.substring(0,4)=='http'" preview-teleported
@@ -87,18 +87,18 @@
 					align="left"
 					header-align="left"
 					prop="shangpinfenlei"
-					label="商品分类">
+					label="Categories">
 					<template #default="scope">
 						{{scope.row.shangpinfenlei}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+				<el-table-column min-width="100"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="pinpai"
-					label="品牌">
+					label="Brand">
 					<template #default="scope">
 						{{scope.row.pinpai}}
 					</template>
@@ -109,12 +109,12 @@
 					align="left"
 					header-align="left"
 					prop="xinjiuchengdu"
-					label="新旧程度">
+					label="Depreciation">
 					<template #default="scope">
 						{{scope.row.xinjiuchengdu}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+<!--				<el-table-column min-width="140"
 					:resizable='true'
 					:sortable='true'
 					align="left"
@@ -124,8 +124,8 @@
 					<template #default="scope">
 						{{scope.row.yuanchanchangjia}}
 					</template>
-				</el-table-column>
-				<el-table-column min-width="140"
+				</el-table-column>-->
+<!--				<el-table-column min-width="140"
 					:resizable='true'
 					:sortable='true'
 					align="left"
@@ -146,19 +146,19 @@
 					<template #default="scope">
 						{{scope.row.juticaizhi}}
 					</template>
-				</el-table-column>
-				<el-table-column min-width="140"
+				</el-table-column>-->
+				<el-table-column min-width="90"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="price"
-					label="价格">
+					label="price">
 					<template #default="scope">
 						{{scope.row.price}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+<!--				<el-table-column min-width="140"
 					:resizable='true'
 					:sortable='true'
 					align="left"
@@ -179,8 +179,8 @@
 					<template #default="scope">
 						{{scope.row.alllimittimes}}
 					</template>
-				</el-table-column>
-				<el-table-column min-width="140"
+				</el-table-column>-->
+<!--				<el-table-column min-width="140"
 					:resizable='true'
 					:sortable='true'
 					align="left"
@@ -190,19 +190,19 @@
 					<template #default="scope">
 						{{scope.row.maijiazhanghao}}
 					</template>
-				</el-table-column>
-				<el-table-column min-width="140"
+				</el-table-column>-->
+				<el-table-column min-width="120"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="maijiaxingming"
-					label="卖家姓名">
+					label="Seller">
 					<template #default="scope">
 						{{scope.row.maijiaxingming}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+<!--				<el-table-column min-width="140"
 					:resizable='true'
 					:sortable='true'
 					align="left"
@@ -223,21 +223,21 @@
 					<template #default="scope">
 						{{scope.row.storeupNumber}}
 					</template>
-				</el-table-column>
-				<el-table-column label="审核回复" min-width="140" :resizable='true' :sortable='true' align="left" header-align="left">
+				</el-table-column>-->
+<!--				<el-table-column label="审核回复" min-width="140" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						{{scope.row.shhf}}
 					</template>
-				</el-table-column>
-				<el-table-column prop="sfsh" label="审核状态" min-width="140" :resizable='true' :sortable='true' align="left" header-align="left">
+				</el-table-column>-->
+				<el-table-column prop="sfsh" label="Status" min-width="140" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
                         <div v-if="scope.row.sfsh=='是'" style="text-align: center">
                             <img src="@/assets/img/pass.png" style="width: 50px;"/>
-                            <div>通过</div>
+                            <div>passed</div>
                         </div>
                         <div v-else-if="scope.row.sfsh=='否'" style="text-align: center">
                             <img src="@/assets/img/reject.png" style="width: 50px;"/>
-                            <div>未通过</div>
+                            <div>rejected</div>
                         </div>
                         <div v-else style="text-align: center">
                             <img src="@/assets/img/wait.png" style="width: 50px;"/>
@@ -245,26 +245,26 @@
                         </div>
 					</template>
 				</el-table-column>
-				<el-table-column label="审核" v-if="btnAuth('ershouwupin','审核')" :resizable='true' :sortable='true' align="left" header-align="left">
+<!--				<el-table-column label="审核" v-if="btnAuth('ershouwupin','审核')" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<el-button v-if="scope.row.sfsh!='是'" link @click="approvalClick(scope.row)">审核</el-button>
 					</template>
-				</el-table-column>
-				<el-table-column label="操作" width="300" :resizable='true' :sortable='true' align="left" header-align="left">
+				</el-table-column>-->
+				<el-table-column label="operate" width="200" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<el-button class="view_btn" type="info" v-if=" btnAuth('ershouwupin','查看')" @click="infoClick(scope.row.id)">
 							<i class="iconfont icon-sousuo2"></i>
-							查看
+							view
 						</el-button>
 						<el-button class="edit_btn" type="primary" @click="editClick(scope.row.id)" v-if=" btnAuth('ershouwupin','修改')">
 							<i class="iconfont icon-xiugai5"></i>
-							修改						</el-button>
+							modify						</el-button>
 						<el-button class="del_btn" type="danger" @click="delClick(scope.row.id)"  v-if="btnAuth('ershouwupin','删除')">
 							<i class="iconfont icon-shanchu4"></i>
-							删除						</el-button>
+							delete						</el-button>
 						<el-button class="operate_btn" v-if="btnAuth('ershouwupin','查看评论')" type="warning" @click="commentClick(scope.row.id)">
 							<i class="iconfont icon-shezhi2"></i>
-							查看评论
+              comments
 						</el-button>
 					</template>
 				</el-table-column>
@@ -277,7 +277,7 @@
                 v-model:current-page="listQuery.page"
 				prev-text="上一页"
 				next-text="下一页"
-				:hide-on-single-page="false"
+				:hide-on-single-page="true"
 				:style='{}'
 				:page-sizes="[10, 20, 30, 40, 50, 100]"
 				@size-change="sizeChange"

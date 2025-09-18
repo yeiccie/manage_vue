@@ -5,26 +5,26 @@
 				<el-form :model="searchQuery" class="search_form" >
 					<div class="search_view">
 						<div class="search_label">
-							用户账号：
+              User Account：
 						</div>
 						<div class="search_box">
-							<el-input class="search_inp" v-model="searchQuery.yonghuzhanghao" placeholder="用户账号"
+							<el-input class="search_inp" v-model="searchQuery.yonghuzhanghao" placeholder="User Account"
 								clearable>
 							</el-input>
 						</div>
 					</div>
 					<div class="search_btn_view">
-						<el-button class="search_btn" type="primary" @click="searchClick()" size="small">搜索</el-button>
+						<el-button class="search_btn" type="primary" @click="searchClick()" size="small">Search</el-button>
 					</div>
 				</el-form>
 				<div class="btn_view">
 					<el-button class="add_btn" type="success" @click="addClick" v-if="btnAuth('yonghu','新增')">
 						<i class="iconfont icon-xinzeng1"></i>
-						新增
+						Add
 					</el-button>
 					<el-button class="del_btn" type="danger" :disabled="selRows.length?false:true" @click="delClick(null)"  v-if="btnAuth('yonghu','删除')">
 						<i class="iconfont icon-shanchu4"></i>
-						删除
+						Delete
 					</el-button>
 				</div>
 			</div>
@@ -38,16 +38,16 @@
 				:data="list"
 				@row-click="listChange">
 				<el-table-column :resizable='true' align="left" header-align="left" type="selection" width="55" />
-				<el-table-column label="序号" width="70" :resizable='true' align="left" header-align="left">
+				<el-table-column label="Seq" width="70" :resizable='true' align="left" header-align="left">
 					<template #default="scope">{{ (listQuery.page-1)*listQuery.limit+scope.$index + 1}}</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+				<el-table-column min-width="145"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="yonghuzhanghao"
-					label="用户账号">
+					label="User Account">
 					<template #default="scope">
 						{{scope.row.yonghuzhanghao}}
 					</template>
@@ -58,12 +58,12 @@
 					align="left"
 					header-align="left"
 					prop="yonghuxingming"
-					label="用户姓名">
+					label="User Name">
 					<template #default="scope">
 						{{scope.row.yonghuxingming}}
 					</template>
 				</el-table-column>
-				<el-table-column label="头像" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="avatar" min-width="140" width="120" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<div v-if="scope.row.touxiang">
 							<el-image v-if="scope.row.touxiang.substring(0,4)=='http'" preview-teleported
@@ -83,34 +83,34 @@
 					align="left"
 					header-align="left"
 					prop="xingbie"
-					label="性别">
+					label="gender">
 					<template #default="scope">
 						{{scope.row.xingbie}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+				<el-table-column min-width="160"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="shoujihaoma"
-					label="手机号码">
+					label="phone number">
 					<template #default="scope">
 						{{scope.row.shoujihaoma}}
 					</template>
 				</el-table-column>
-				<el-table-column label="操作" width="300" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="operate" width="260" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<el-button class="view_btn" type="info" v-if=" btnAuth('yonghu','查看')" @click="infoClick(scope.row.id)">
 							<i class="iconfont icon-sousuo2"></i>
-							查看
+              view
 						</el-button>
 						<el-button class="edit_btn" type="primary" @click="editClick(scope.row.id)" v-if=" btnAuth('yonghu','修改')">
 							<i class="iconfont icon-xiugai5"></i>
-							修改						</el-button>
+							modify						</el-button>
 						<el-button class="del_btn" type="danger" @click="delClick(scope.row.id)"  v-if="btnAuth('yonghu','删除')">
 							<i class="iconfont icon-shanchu4"></i>
-							删除						</el-button>
+							delete						</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -120,9 +120,9 @@
 				:total="total"
 				:page-size="listQuery.limit"
                 v-model:current-page="listQuery.page"
-				prev-text="上一页"
-				next-text="下一页"
-				:hide-on-single-page="false"
+				prev-text="Pre"
+				next-text="Next"
+				:hide-on-single-page="true"
 				:style='{}'
 				:page-sizes="[10, 20, 30, 40, 50, 100]"
 				@size-change="sizeChange"

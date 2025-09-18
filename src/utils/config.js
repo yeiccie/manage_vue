@@ -7,7 +7,7 @@ const config = {
     },
     getProjectName(){
         return {
-            projectName: `Sec Mall Mini Program`
+            projectName: `Second-hand Trading Mall Management`
         } 
     }
 }

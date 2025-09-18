@@ -1,19 +1,19 @@
 <template>
     <div>
         <div class="center_view" v-if="btnAuth('menu','菜单管理')">
-            <div style="text-align: left;width: 100%;margin-bottom: 20px">
-                <el-button type="primary" style="width: 100px" @click="save">保存修改</el-button>
+            <div style="text-align: left;width: 100%;margin-bottom: 40px">
+                <el-button type="primary" style="width: 100px" @click="save">Save change</el-button>
             </div>
-            <el-tabs type="border-card" v-model="role_index" @tab-change="tabClick">
+            <el-tabs type="border-card" v-model="role_index" @tab-change="tabClick" style="border: 0">
                 <template v-for="(role,r_index) in menus" :key="role.roleName">
-                    <el-tab-pane :label="role.roleName" :name="r_index">
-                        <div v-if="r_index==role_index">
-                            <el-collapse v-model="collapse_default">
+                    <el-tab-pane :label="role.roleName" :name="r_index" style="margin-top: 10px">
+                        <div v-if="r_index==role_index" style="border: 0">
+                            <el-collapse v-model="collapse_default" style="border: 0">
                                 <el-collapse-item v-for="(table,t_index) in role.backMenu" :name="table.menu">
                                     <template #title>
                                         <div style="width: 100%;display: flex;justify-content: space-between;align-items: center">
                                             <div style="font-weight: 700;font-size: 16px">{{table.menu}}</div>
-                                            <div style="padding-right: 30px">
+                                            <div style="padding-right: 30px;">
                                                 <el-button size="small" @click.stop="moveUp(role.backMenu,t_index)">
                                                     上移
                                                 </el-button>

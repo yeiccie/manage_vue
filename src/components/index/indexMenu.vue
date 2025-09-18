@@ -6,7 +6,7 @@
 				<el-menu-item class="first-item" :index="0" @click="menuHandler('')">
 					<i class="iconfont icon-zhuye2" v-if="collapse?false:true"></i>
 					<template #title>
-						<span>首页</span>
+						<span>Home page</span>
 					</template>
 				</el-menu-item>
                 <template v-for=" (item,index) in menuList.backMenu">
@@ -305,7 +305,7 @@
     left: 0px;
     border-width: 0 3px 0 0;
     border-style: solid;
-    border-color: #8b77d1;
+    border-color: #7598da;
     padding: 20px 10px;
     transition: all 0.3s ease-in-out 0s;
 }

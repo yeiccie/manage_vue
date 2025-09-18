@@ -21,7 +21,7 @@ export const routes = [{
 		component: () => import('../views/login.vue')
 	},{
 		path: '/',
-		name: '首页',
+		name: 'Home page',
 		component: () => import('../views/index'),
 		children: [{
 			path: '/',
@@ -32,43 +32,43 @@ export const routes = [{
 			}
 		}, {
 			path: '/updatepassword',
-			name: '修改密码',
+			name: 'Reset password',
 			component: () => import('../views/updatepassword.vue')
 		}
 
 		,{
 			path: '/yonghuCenter',
-			name: '用户个人中心',
+			name: 'Personal',
 			component: yonghuCenter
 		}
 		,{
 			path: '/news',
-			name: '系统公告',
+			name: 'Announcement',
 			component: news
 		}
 		,{
 			path: '/address',
-			name: '地址',
+			name: 'Address',
 			component: address
 		}
 		,{
 			path: '/yonghu',
-			name: '用户',
+			name: 'User',
 			component: yonghu
 		}
 		,{
 			path: '/shangpinfenlei',
-			name: '商品分类',
+			name: 'Product Categories',
 			component: shangpinfenlei
 		}
 		,{
 			path: '/ershouwupin',
-			name: '二手物品',
+			name: 'Items',
 			component: ershouwupin
 		}
 		,{
 			path: '/orders',
-			name: '订单管理',
+			name: 'Order Management',
 			component: orders
 		}
 		,{
@@ -78,22 +78,22 @@ export const routes = [{
 		}
         ,{
             path: '/menu',
-            name: '菜单权限管理',
+            name: 'Menu permissions',
             component: menu_manage
         }
 		,{
 			path: '/storeup',
-			name: '我的收藏',
+			name: 'My Favorites',
 			component: storeup
 		}
 		,{
 			path: '/config',
-			name: '轮播图',
+			name: 'Carousel',
 			component: config
 		}
 		,{
 			path: '/users',
-			name: '管理员',
+			name: 'Administrator',
 			component: users
 		}
 		]

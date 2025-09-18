@@ -9,11 +9,11 @@
 			</div>
 		</div>
 
-		<div class="projectTitle">Sec Mall </div>
+		<div class="projectTitle">Second-hand Trading Mall Management</div>
 		<div class="top_right_view">
 			<el-dropdown class="avatar-container" trigger="hover">
 				<div class="avatar-wrapper">
-					<div class="nickname">欢迎 {{$toolUtil.storageGet('adminName')}}</div>
+					<div class="nickname">welcome {{$toolUtil.storageGet('adminName')}}</div>
 					<img class="user-avatar" :src="store.getters['user/avatar']">
 					<el-icon class="el-icon-arrow-down">
 						<arrow-down />
@@ -22,13 +22,13 @@
 				<template #dropdown>
 					<el-dropdown-menu class="user-dropDown" slot="dropdown">
 						<el-dropdown-item class="center" @click="centerClick" v-if="roleName!='管理员'">
-							个人中心
+              Personal
 						</el-dropdown-item>
 						<el-dropdown-item class="password" @click="updatepasswordClick">
-							修改密码
+							Reset Password
 						</el-dropdown-item>
 						<el-dropdown-item class="loginOut">
-							<span style="display:block;" @click="onLogout">退出登录</span>
+							<span style="display:block;" @click="onLogout">Logout</span>
 						</el-dropdown-item>
 					</el-dropdown-menu>
 				</template>
@@ -38,8 +38,8 @@
     <div class="breadcrumb-view">
         <el-breadcrumb separator="-">
             <el-breadcrumb-item v-for="(item,index) in breadcrumbList" :key="item.path">
-                <i class="iconfont icon-zhuye2" v-if="!index"></i>
-                <span @click="router.push(item.path)">{{item.name}}</span>
+                <i class="iconfont icon-zhuye2" v-if="!index">&nbsp;</i>
+                <span @click="router.push(item.path)" style="font-weight: bold">{{item.name}}</span>
             </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
@@ -184,7 +184,7 @@
 /*总盒子*/
 .top_view{
     height: 80px;
-    width: calc(100% - 17px);
+    width: calc(100% - 0px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,7 +195,7 @@
     padding: 0px;
     border-width: 0 0 3px;
     border-style: solid;
-    border-color: #c797cf;
+    border-color: #7598da;
     background:#9ed6fc;
     color: #333;
 }
@@ -331,12 +331,13 @@
 .breadcrumb-view {
     display:block;
     background:linear-gradient(180deg, rgba(233,247,255,1) 0%, rgba(139,199,239,1) 50%, rgba(109,188,241,1) 50%, rgba(142,201,240,1) 100%);
-    width: calc(100% - 70px) !important;
-    height: 38px;
+    width: calc(100% - 0px) !important;
+    height: 50px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    margin-left:40px;
+    padding: 0 10px;
+    margin-left:0px;
+    margin-top:-32px;
 }
 .el-breadcrumb {
     display: flex;

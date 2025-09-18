@@ -7,11 +7,11 @@
 				<div class="btn_view">
 					<el-button class="add_btn" type="success" @click="addClick" v-if="btnAuth('address','新增')">
 						<i class="iconfont icon-xinzeng1"></i>
-						新增
+						add
 					</el-button>
 					<el-button class="del_btn" type="danger" :disabled="selRows.length?false:true" @click="delClick(null)"  v-if="btnAuth('address','删除')">
 						<i class="iconfont icon-shanchu4"></i>
-						删除
+						delete
 					</el-button>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 				:data="list"
 				@row-click="listChange">
 				<el-table-column :resizable='true' align="left" header-align="left" type="selection" width="55" />
-				<el-table-column label="序号" width="70" :resizable='true' align="left" header-align="left">
+				<el-table-column label="Seq" width="70" :resizable='true' align="left" header-align="left">
 					<template #default="scope">{{ (listQuery.page-1)*listQuery.limit+scope.$index + 1}}</template>
 				</el-table-column>
 				<el-table-column min-width="140"
@@ -34,7 +34,7 @@
 					align="left"
 					header-align="left"
 					prop="address"
-					label="地址">
+					label="Address">
 					<template #default="scope">
 						{{scope.row.address}}
 					</template>
@@ -45,45 +45,45 @@
 					align="left"
 					header-align="left"
 					prop="name"
-					label="收货人">
+					label="addressee">
 					<template #default="scope">
 						{{scope.row.name}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+				<el-table-column min-width="148"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="phone"
-					label="电话">
+					label="Phone Number">
 					<template #default="scope">
 						{{scope.row.phone}}
 					</template>
 				</el-table-column>
-				<el-table-column min-width="140"
+				<el-table-column min-width="160"
 					:resizable='true'
 					:sortable='true'
 					align="left"
 					header-align="left"
 					prop="isdefault"
-					label="是否默认地址">
+					label="Is default address">
 					<template #default="scope">
 						{{scope.row.isdefault}}
 					</template>
 				</el-table-column>
-				<el-table-column label="操作" width="300" :resizable='true' :sortable='true' align="left" header-align="left">
+				<el-table-column label="Operations" width="270" :resizable='true' :sortable='true' align="left" header-align="left">
 					<template #default="scope">
 						<el-button class="view_btn" type="info" v-if=" btnAuth('address','查看')" @click="infoClick(scope.row.id)">
 							<i class="iconfont icon-sousuo2"></i>
-							查看
+							view
 						</el-button>
 						<el-button class="edit_btn" type="primary" @click="editClick(scope.row.id)" v-if=" btnAuth('address','修改')">
 							<i class="iconfont icon-xiugai5"></i>
-							修改						</el-button>
+							modify						</el-button>
 						<el-button class="del_btn" type="danger" @click="delClick(scope.row.id)"  v-if="btnAuth('address','删除')">
 							<i class="iconfont icon-shanchu4"></i>
-							删除						</el-button>
+							delete						</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -93,8 +93,8 @@
 				:total="total"
 				:page-size="listQuery.limit"
                 v-model:current-page="listQuery.page"
-				prev-text="上一页"
-				next-text="下一页"
+				prev-text="Pre"
+				next-text="Next"
 				:hide-on-single-page="false"
 				:style='{}'
 				:page-sizes="[10, 20, 30, 40, 50, 100]"
@@ -328,6 +328,7 @@
 		}
 		//头部按钮盒子
 		.btn_view {
+      margin-top: -30px;
 			// 其他
 			:deep(.el-button--default){
 			}
